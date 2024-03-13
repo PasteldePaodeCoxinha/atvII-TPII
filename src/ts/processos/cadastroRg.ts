@@ -11,8 +11,8 @@ export default class CadastroRg extends Processo {
     }
 
     processar(): void {
-        let numero = this.entrada.receberTexto('Qual o número do documento?')
-        let dataExpedicao = this.entrada.receberData('Qual a data de expedição do documento?')
+        let numero = this.entrada.receberTexto('Qual o número do documento: ')
+        let dataExpedicao = this.entrada.receberData('Qual a data de expedição do documento: ')
         let rg = new Documento(numero, TipoDocumento.RG, dataExpedicao)
         this.cliente.Documentos.push(rg)
     }

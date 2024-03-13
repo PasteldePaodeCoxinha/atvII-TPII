@@ -9,7 +9,7 @@ export default class TipoCadastroCliente extends Processo {
     }
     processar(): void {
         this.menu.mostrar()
-        this.opcao = this.entrada.receberNumero('Qual opção desejada?')
+        this.opcao = this.entrada.receberNumero('Qual opção desejada: ')
         
         switch (this.opcao) {
             case 1:
@@ -17,7 +17,7 @@ export default class TipoCadastroCliente extends Processo {
                 this.processo.processar()
                 break
             default:
-                console.log('Opção não entendida :(')
+                console.log('Opção não entendida >:(')
         }
     }
 }

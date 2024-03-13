@@ -16,7 +16,7 @@ export default class CadastrarDocumentosCliente extends Processo {
         console.log('Inciando o cadastro de documentos...')
         while (this.execucao) {
             this.menu.mostrar()
-            this.opcao = this.entrada.receberNumero('Qual opção desejada?')
+            this.opcao = this.entrada.receberNumero('Qual opção desejada: ')
             switch (this.opcao) {
                 case 1:
                     this.processo = new CadastroRg(this.cliente)
@@ -26,7 +26,7 @@ export default class CadastrarDocumentosCliente extends Processo {
                     this.execucao = false
                     break
                 default:
-                    console.log('Opção não entendida :(')
+                    console.log('Opção não entendida >:(')
             }
         }
     }

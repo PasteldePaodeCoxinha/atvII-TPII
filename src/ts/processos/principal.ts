@@ -27,7 +27,7 @@ export default class Principal extends Processo {
                 console.clear()
                 break
             default:
-                console.log('Opção não entendida :(')
+                console.log('Opção não entendida >:(')
         }
     }
 }

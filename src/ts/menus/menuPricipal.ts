@@ -3,7 +3,7 @@ import Menu from "../interfaces/menu";
 export default class MenuPrincipal implements Menu {
     mostrar(): void {
         console.log(`****************************`)
-        console.log(`| Por favor, selecione uma opção...`)
+        console.log(`| Selecione uma das opções...`)
         console.log(`----------------------`)
         console.log(`| Opções para cliente:`)
         console.log(`----------------------`)

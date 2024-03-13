@@ -7,9 +7,9 @@ import CadastroEnderecoTitular from "./cadastroEnderecoTitular";
 export default class CadastroClienteTitular extends Processo {
     processar(): void {
         console.log('Iniciando o cadastro de um novo cliente...')
-        let nome = this.entrada.receberTexto('Qual o nome do novo cliente?')
-        let nomeSocial = this.entrada.receberTexto('Qual o nome social do novo cliente?')
-        let dataNascimento = this.entrada.receberData('Qual a data de nascimento?')
+        let nome = this.entrada.receberTexto('Qual o nome do novo cliente: ')
+        let nomeSocial = this.entrada.receberTexto('Qual o nome social do novo cliente: ')
+        let dataNascimento = this.entrada.receberData('Qual a data de nascimento: ')
         let cliente = new Cliente(nome, nomeSocial, dataNascimento)
 
         this.processo = new CadastroEnderecoTitular(cliente)

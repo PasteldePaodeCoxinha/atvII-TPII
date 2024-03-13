@@ -11,7 +11,7 @@ export default class TipoListagemClientes extends Processo {
 
     processar(): void {
         this.menu.mostrar()
-        this.opcao = this.entrada.receberNumero('Qual a opção desejada?')
+        this.opcao = this.entrada.receberNumero('Qual a opção desejada: ')
         switch (this.opcao) {
             case 1:
                 this.processo = new ListagemTitulares()
@@ -24,7 +24,7 @@ export default class TipoListagemClientes extends Processo {
                 break;
 
             default:
-                console.log('Opção não entendida... :(')
+                console.log('Opção não entendida... >:(')
         }
     }
 }
