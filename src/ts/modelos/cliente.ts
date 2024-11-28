@@ -33,24 +33,16 @@ export default class Cliente {
 
     public set Nome(nome: string) { this.nome = nome }
     public set NomeSocial(nomeSocial: string) { this.nomeSocial = nomeSocial }
-    public set DataNascimento(dataNascimento: Date) { this.dataNascimento = dataNascimento }
     public set AddTelefone(telefone: Telefone) { this.telefones.push(telefone) }
     public set AddDocumento(documento: Documento) { this.documentos.push(documento) }
-    public set Endereco(endereco: Endereco) {this.Endereco = endereco}
+    public set Endereco(endereco: Endereco) { this.endereco = endereco }
 
-    public EdiTelefones(numero: string, ddd: string) {
+    public EdiTelefones(numero: string, novoNumero: string, novoDdd: string) {
         let telefone = this.telefones.filter(t => t.Numero == numero)[0]
         if (telefone) {
-            if (numero) { telefone.Numero = numero }
-            if (ddd) { telefone.Ddd = ddd }
+            if (novoNumero) { telefone.Numero = novoNumero }
+            if (novoDdd) { telefone.Ddd = novoDdd }
         }
-    }
-    public EdiDocumentos(tipo: TipoDocumento, numero: string, dataExpedicao: Date) {
-          let documento = this.documentos.filter(d => d.Tipo == tipo)[0]
-          if (documento){
-            if(numero){ documento.Numero = numero }
-            if(dataExpedicao) { documento.DataExpedicao = dataExpedicao }
-          }
     }
     public EdiEndereco(rua: string, bairro: string, cidade: string, estado: string, pais: string, codigoPostal: string) {
         if (this.endereco.Rua) { this.endereco.Rua = rua }
