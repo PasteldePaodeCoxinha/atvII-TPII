@@ -5,9 +5,16 @@ import Documento from "../modelos/documento";
 
 export default class CadastroRg extends Processo {
     private cliente: Cliente
-    constructor(cliente: Cliente) {
+    private static instancia: CadastroRg 
+    private constructor(cliente: Cliente) {
         super()
         this.cliente = cliente
+    }
+    public static obterCadastroRg(cliente: Cliente): CadastroRg {
+        if (!CadastroRg.instancia) {
+            this.instancia = new CadastroRg(cliente)
+        }
+        return this.instancia
     }
 
     processar(): void {

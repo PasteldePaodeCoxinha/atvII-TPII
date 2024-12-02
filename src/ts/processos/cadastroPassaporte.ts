@@ -5,9 +5,17 @@ import Documento from "../modelos/documento";
 
 export default class CadastroPassaporte extends Processo {
     private cliente: Cliente
+    private static instancia: CadastroPassaporte
     constructor(cliente: Cliente) {
         super()
         this.cliente = cliente
+    }
+
+    public static obterCadastroPassaporte(cliente: Cliente) {
+        if (!CadastroPassaporte.instancia) {
+            this.instancia = new CadastroPassaporte(cliente)
+        }
+        return this.instancia
     }
 
     processar(): void {

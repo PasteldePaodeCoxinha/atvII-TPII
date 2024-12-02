@@ -5,9 +5,17 @@ import Documento from "../modelos/documento";
 
 export default class CadastroCpf extends Processo {
     private cliente: Cliente
+    private static instancia: CadastroCpf
     constructor(cliente: Cliente) {
         super()
         this.cliente = cliente
+    }
+
+    public static obterCadastroCpf(cliente: Cliente) {
+        if (!CadastroCpf.instancia) {
+            this.instancia = new CadastroCpf(cliente)
+        }
+        return this.instancia
     }
 
     processar(): void {
