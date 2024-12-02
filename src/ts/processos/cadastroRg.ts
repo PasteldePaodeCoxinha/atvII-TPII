@@ -27,8 +27,8 @@ export default class CadastroRg extends Processo {
                 break
             }
         }
-        const dataExpedicao = this.entrada.receberData('Qual a data de expedição do RG: ')
-        let rg = new Documento(numero, TipoDocumento.RG, dataExpedicao)
+        const dataExpedicao = this.entrada.receberData('Qual a data de expedição do RG')
+        let rg = Documento.obterDocumento(numero, TipoDocumento.RG, dataExpedicao)
         this.cliente.Documentos.push(rg)
     }
 }

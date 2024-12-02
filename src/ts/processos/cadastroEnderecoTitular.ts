@@ -4,10 +4,18 @@ import Endereco from "../modelos/endereco";
 
 export default class CadastroEnderecoTitular extends Processo {
     private cliente: Cliente
+    private static instancia: CadastroEnderecoTitular
 
-    constructor(cliente: Cliente) {
+    private constructor(cliente: Cliente) {
         super()
         this.cliente = cliente
+    }
+
+    public static obterCadastroEnderecoTitular(cliente: Cliente) {
+        if (!this.instancia) {
+            this.instancia = new CadastroEnderecoTitular(cliente)
+        }
+        return this.instancia
     }
 
     processar(): void {
@@ -18,7 +26,7 @@ export default class CadastroEnderecoTitular extends Processo {
         let estado = this.entrada.receberTexto('Qual o estado: ')
         let pais = this.entrada.receberTexto('Qual o país: ')
         let codigoPostal = this.entrada.receberTexto('Qual o código postal (Se não tiver deixe vazio): ')
-        let endereco = new Endereco(rua,bairro,cidade,estado,pais,codigoPostal)
+        let endereco = Endereco.obterEndereco(rua, bairro, cidade, estado, pais, codigoPostal)
         this.cliente.Endereco = endereco
     }
 

@@ -4,11 +4,19 @@ export default class Documento {
     private numero: string
     private tipo: TipoDocumento
     private dataExpedicao: Date
+    private static instancia: Documento
 
-    constructor(numero: string, tipo: TipoDocumento, dataExpedicao: Date) {
+    private constructor(numero: string, tipo: TipoDocumento, dataExpedicao: Date) {
         this.numero = numero
         this.tipo = tipo
         this.dataExpedicao = dataExpedicao
+    }
+
+    public static obterDocumento(numero: string, tipo: TipoDocumento, dataExpedicao: Date){
+        if (!this.instancia) {
+            this.instancia = new Documento(numero, tipo, dataExpedicao)
+        }
+        return this.instancia
     }
 
     public get Numero(){ return this.numero }

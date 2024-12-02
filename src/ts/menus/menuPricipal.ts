@@ -1,6 +1,15 @@
 import Menu from "../interfaces/menu";
 
 export default class MenuPrincipal implements Menu {
+    private static instancia: MenuPrincipal
+    private constructor() { }
+    public static obterMenuPrincipal() {
+        if (!this.instancia) {
+            this.instancia = new MenuPrincipal()
+        }
+        return this.instancia
+    }
+
     mostrar(): void {
         console.log(`****************************`)
         console.log(`| Selecione uma das opções...`)

@@ -4,9 +4,17 @@ import ListagemTitulares from "./listagemTitulares";
 import PegarUmTitular from "./pegarUmTitular";
 
 export default class TipoListagemClientes extends Processo {
-    constructor() {
+    private static instancia: TipoListagemClientes
+    private constructor() {
         super()
-        this.menu = new MenuTipoListagemClientes()
+        this.menu = MenuTipoListagemClientes.obterMenuTipoListagemClientes()
+    }
+
+    public static obterTipoListagemClientes(){
+        if (!this.instancia) {
+            this.instancia = new TipoListagemClientes()
+        }
+        return this.instancia
     }
 
     processar(): void {
@@ -14,12 +22,12 @@ export default class TipoListagemClientes extends Processo {
         this.opcao = this.entrada.receberNumero('Qual a opção desejada: ')
         switch (this.opcao) {
             case 1:
-                this.processo = new ListagemTitulares()
+                this.processo = ListagemTitulares.obterListagemTitulares()
                 this.processo.processar()
                 break;
 
             case 2:
-                this.processo = new PegarUmTitular()
+                this.processo = PegarUmTitular.obterPegarUmTitular()
                 this.processo.processar()
                 break;
 

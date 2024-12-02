@@ -5,17 +5,29 @@ import CadastrarDocumentosCliente from "./cadastrarDocumentosCliente";
 import CadastroEnderecoTitular from "./cadastroEnderecoTitular";
 
 export default class CadastroClienteTitular extends Processo {
+    private static instancia: CadastroClienteTitular
+    private constructor() {
+        super()
+    }
+
+    public static obterCadastroClienteTitular(){
+        if (!this.instancia) {
+            this.instancia = new CadastroClienteTitular()
+        }
+        return this.instancia
+    }
+    
     processar(): void {
         console.log('Iniciando o cadastro de um novo cliente...')
         let nome = this.entrada.receberTexto('Qual o nome do novo cliente: ')
         let nomeSocial = this.entrada.receberTexto('Qual o nome social do novo cliente: ')
-        let dataNascimento = this.entrada.receberData('Qual a data de nascimento: ')
-        let cliente = new Cliente(nome, nomeSocial, dataNascimento)
+        let dataNascimento = this.entrada.receberData('Qual a data de nascimento')
+        let cliente = Cliente.obterCliente(nome, nomeSocial, dataNascimento)
 
-        this.processo = new CadastroEnderecoTitular(cliente)
+        this.processo = CadastroEnderecoTitular.obterCadastroEnderecoTitular(cliente)
         this.processo.processar()
 
-        this.processo = new CadastrarDocumentosCliente(cliente)
+        this.processo = CadastrarDocumentosCliente.obterCadastrarDocumentosCliente(cliente)
         this.processo.processar()
 
         let armazem = Armazem.InstanciaUnica

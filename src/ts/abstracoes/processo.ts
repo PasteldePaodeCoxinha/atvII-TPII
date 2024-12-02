@@ -4,7 +4,7 @@ import Entrada from "../io/entrada"
 export default abstract class Processo {
     protected opcao!: number
     protected menu!: Menu
-    protected entrada = new Entrada()
+    protected entrada = Entrada.obterEntrada()
     protected processo!: Processo
     protected execucao!: boolean
     public get Execucao(){

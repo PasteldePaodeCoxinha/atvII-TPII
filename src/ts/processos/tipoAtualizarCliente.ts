@@ -3,17 +3,26 @@ import MenuTipoAtualizarCliente from "../menus/menuTipoAtualizarCliente";
 import AtualizarClienteTitular from "./atualizarClienteTitular";
 
 export default class TipoAtualizarCliente extends Processo {
-    constructor() {
+    private static instancia: TipoAtualizarCliente 
+    private constructor() {
         super()
-        this.menu = new MenuTipoAtualizarCliente()
+        this.menu = MenuTipoAtualizarCliente.obterMenuTipoAtualizarCliente()
     }
+
+    public static obterTipoAtualizarCliente(){
+        if (!this.instancia) {
+            this.instancia = new TipoAtualizarCliente()
+        }
+        return this.instancia
+    }
+
     processar(): void {
         this.menu.mostrar()
         this.opcao = this.entrada.receberNumero('Qual opção desejada: ')
 
         switch (this.opcao) {
             case 1:
-                this.processo = new AtualizarClienteTitular()
+                this.processo = AtualizarClienteTitular.obterAtualizarClienteTitular()
                 this.processo.processar()
                 break
             default:

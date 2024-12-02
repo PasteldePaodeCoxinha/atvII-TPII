@@ -7,9 +7,17 @@ import Cliente from "../modelos/cliente";
 export default class PegarUmTitular extends Processo {
     private clientes: Cliente[]
     private impressor!: Impressor
-    constructor(){
+    private static instancia: PegarUmTitular
+    private constructor(){
         super()
         this.clientes = Armazem.InstanciaUnica.Clientes
+    }
+
+    public static obterPegarUmTitular(){
+        if (!this.instancia) {
+            this.instancia = new PegarUmTitular()
+        }
+        return this.instancia
     }
 
     processar(): void {
@@ -17,7 +25,7 @@ export default class PegarUmTitular extends Processo {
         let cliente = this.clientes.filter(c => c.Nome == cliNome)[0]
 
         if (cliente) {
-            this.impressor = new ImpressaorCliente(cliente)
+            this.impressor = ImpressaorCliente.obterImpressorCliente(cliente)
             console.log(this.impressor.imprimir());
             
         }

@@ -7,11 +7,20 @@ import CadastroRg from "./cadastroRg";
 
 export default class CadastrarDocumentosCliente extends Processo {
     private cliente: Cliente
-    constructor(cliente: Cliente) {
+    private static instancia: CadastrarDocumentosCliente
+
+    private constructor(cliente: Cliente) {
         super()
         this.cliente = cliente
-        this.menu = new MenuTipoDocumento()
+        this.menu = MenuTipoDocumento.obterMenuTipoDocumento()
         this.execucao = true
+    }
+
+    public static obterCadastrarDocumentosCliente(cliente: Cliente) {
+        if (!this.instancia) {
+            this.instancia = new CadastrarDocumentosCliente(cliente)
+        }
+        return this.instancia
     }
 
     processar(): void {
@@ -22,7 +31,7 @@ export default class CadastrarDocumentosCliente extends Processo {
             switch (this.opcao) {
                 case 1:
                     this.processo = CadastroCpf.obterCadastroCpf(this.cliente)
-                    this.processo.processar
+                    this.processo.processar()
                     break
                 case 2:
                     this.processo = CadastroRg.obterCadastroRg(this.cliente)

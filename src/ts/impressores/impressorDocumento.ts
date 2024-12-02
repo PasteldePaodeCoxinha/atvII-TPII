@@ -3,9 +3,17 @@ import Documento from "../modelos/documento";
 
 export default class ImpressorDocumento implements Impressor {
     private documento: Documento
+    private static instancia: ImpressorDocumento
 
-    constructor(documento: Documento) {
+    private constructor(documento: Documento) {
         this.documento = documento
+    }
+
+    public static obterImpressorDocumento(documento: Documento){
+        if (!this.instancia) {
+            this.instancia = new ImpressorDocumento(documento)
+        }
+        return this.instancia
     }
 
     imprimir(): string {

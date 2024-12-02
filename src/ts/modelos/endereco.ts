@@ -7,14 +7,22 @@ export default class Endereco implements Prototipo {
     private estado: string
     private pais: string
     private codigoPostal: string
+    private static instancia: Endereco
 
-    constructor(rua: string, bairro: string, cidade: string, estado: string, pais: string, codigoPostal: string) {
+    private constructor(rua: string, bairro: string, cidade: string, estado: string, pais: string, codigoPostal: string) {
         this.rua = rua
         this.bairro = bairro
         this.cidade = cidade
         this.estado = estado
         this.pais = pais
         this.codigoPostal = codigoPostal
+    }
+
+    public static obterEndereco(rua: string, bairro: string, cidade: string, estado: string, pais: string, codigoPostal: string){
+        if (!this.instancia) {
+            this.instancia = new Endereco(rua, bairro, cidade, estado, pais, codigoPostal)
+        }
+        return this.instancia
     }
 
     public get Rua() {return this.rua}

@@ -6,7 +6,7 @@ import Documento from "../modelos/documento";
 export default class CadastroCpf extends Processo {
     private cliente: Cliente
     private static instancia: CadastroCpf
-    constructor(cliente: Cliente) {
+    private constructor(cliente: Cliente) {
         super()
         this.cliente = cliente
     }
@@ -28,8 +28,8 @@ export default class CadastroCpf extends Processo {
                 break
             }
         }
-        const dataExpedicao = this.entrada.receberData('Qual a data de expedição do CPF: ')
-        let cpf = new Documento(numero, TipoDocumento.CPF, dataExpedicao)
+        const dataExpedicao = this.entrada.receberData('Qual a data de expedição do CPF')
+        let cpf = Documento.obterDocumento(numero, TipoDocumento.CPF, dataExpedicao)
         this.cliente.Documentos.push(cpf)
     }
 }
