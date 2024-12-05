@@ -3,17 +3,9 @@ import Endereco from "../modelos/endereco";
 
 export default class ImpressorEndereco implements Impressor {
     private endereco: Endereco
-    private static instancia: ImpressorEndereco
 
-    private constructor(endereco: Endereco) {
+    constructor(endereco: Endereco) {
         this.endereco = endereco
-    }
-
-    public static obterImpressorEndereco(endereco: Endereco) {
-        if (!this.instancia) {
-            this.instancia = new ImpressorEndereco(endereco)
-        }
-        return this.instancia
     }
 
     imprimir(): string {

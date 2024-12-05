@@ -8,18 +8,9 @@ import CadastroEnderecoTitular from "./cadastroEnderecoTitular";
 export default class AtualizarClienteTitular extends Processo {
     private clientes: Cliente[]
 
-    private static instancia: AtualizarClienteTitular
-
-    private constructor() {
+    constructor() {
         super()
         this.clientes = Armazem.InstanciaUnica.Clientes
-    }
-
-    public static obterAtualizarClienteTitular(){
-        if (!this.instancia) {
-            this.instancia = new AtualizarClienteTitular()
-        }
-        return this.instancia
     }
 
     atualizar(cliente: Cliente): Cliente {
@@ -34,7 +25,7 @@ export default class AtualizarClienteTitular extends Processo {
         if (res == "S") {
             let ddd = this.entrada.receberTexto("Digite o ddd: ")
             let numero = this.entrada.receberTexto("Digite o número: ")
-            let telefone = Telefone.obterTelefone(ddd, numero)
+            let telefone = new Telefone(ddd, numero)
             cliente.AddTelefone = telefone
         }
         res = this.entrada.receberTexto("Você deseja alterar um telefone (S/N): ").toUpperCase()
@@ -48,7 +39,7 @@ export default class AtualizarClienteTitular extends Processo {
         }
         res = this.entrada.receberTexto("Você deseja adicionar um documento (S/N): ").toUpperCase()
         if (res == "S") {
-            this.processo = CadastrarDocumentosCliente.obterCadastrarDocumentosCliente(cliente)
+            this.processo = new CadastrarDocumentosCliente(cliente)
             this.processo.processar()
             res
         }

@@ -8,7 +8,7 @@ let processo: Processo
 let execucao: Boolean = true
 
 while (execucao) {
-    processo = Principal.obterPrincipal()
+    processo = new Principal()
     processo.processar()
     execucao = processo.Execucao
 }

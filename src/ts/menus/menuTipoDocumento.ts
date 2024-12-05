@@ -1,15 +1,6 @@
 import Menu from "../interfaces/menu";
 
 export default class MenuTipoDocumento implements Menu {
-    private static instancia: MenuTipoDocumento
-    private constructor() { }
-    public static obterMenuTipoDocumento() {
-        if (!this.instancia) {
-            this.instancia = new MenuTipoDocumento()
-        }
-        return this.instancia
-    }
-
     mostrar(): void {
         console.clear()
         console.log(`****************************`)

@@ -1,11 +1,14 @@
 import Cliente from "../modelos/cliente";
 
 export default class Armazem {
-    private static instanciaUnica: Armazem = new Armazem()
+    private static instancia: Armazem
     private clientes: Cliente[] = []
     private constructor() { }
     public static get InstanciaUnica() {
-        return this.instanciaUnica
+        if (!this.instancia) {
+            this.instancia = new Armazem()
+        }
+        return this.instancia
     }
     public get Clientes() {
         return this.clientes

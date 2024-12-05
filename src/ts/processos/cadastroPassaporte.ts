@@ -5,17 +5,9 @@ import Documento from "../modelos/documento";
 
 export default class CadastroPassaporte extends Processo {
     private cliente: Cliente
-    private static instancia: CadastroPassaporte
-    private constructor(cliente: Cliente) {
+    constructor(cliente: Cliente) {
         super()
         this.cliente = cliente
-    }
-
-    public static obterCadastroPassaporte(cliente: Cliente) {
-        if (!CadastroPassaporte.instancia) {
-            this.instancia = new CadastroPassaporte(cliente)
-        }
-        return this.instancia
     }
 
     processar(): void {
@@ -31,7 +23,7 @@ export default class CadastroPassaporte extends Processo {
             }
         }
         const dataExpedicao = this.entrada.receberData('Qual a data de expedição do passaporte')
-        let cpf = Documento.obterDocumento((letras + numero), TipoDocumento.Passaporte, dataExpedicao)
+        let cpf = new Documento((letras + numero), TipoDocumento.Passaporte, dataExpedicao)
         this.cliente.Documentos.push(cpf)
     }
 }

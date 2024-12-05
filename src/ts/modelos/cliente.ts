@@ -13,20 +13,12 @@ export default class Cliente {
     private documentos: Documento[] = []
     private dependentes: Cliente[] = []
     private titular!: Cliente
-    private static instancia: Cliente
 
-    private constructor(nome: string, nomeSocial: string, dataNascimento: Date) {
+    constructor(nome: string, nomeSocial: string, dataNascimento: Date) {
         this.nome = nome
         this.nomeSocial = nomeSocial
         this.dataNascimento = dataNascimento
         this.dataCadastro = new Date()
-    }
-
-    public static obterCliente(nome: string, nomeSocial: string, dataNascimento: Date){
-        if (!this.instancia) {
-            this.instancia = new Cliente(nome, nomeSocial, dataNascimento)
-        }
-        return this.instancia
     }
 
     public get Nome() { return this.nome }

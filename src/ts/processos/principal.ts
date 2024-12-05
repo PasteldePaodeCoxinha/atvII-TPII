@@ -5,17 +5,11 @@ import TipoCadastroCliente from "./tipoCadastroCliente"
 import TipoListagemClientes from "./tipoListagemClientes"
 
 export default class Principal extends Processo {
-    private static instancia: Principal
-    private constructor() {
+
+    constructor() {
         super()
         this.execucao = true
-        this.menu = MenuPrincipal.obterMenuPrincipal()
-    }
-    public static obterPrincipal(){
-        if (!this.instancia) {
-            this.instancia = new Principal()
-        }
-        return this.instancia
+        this.menu = new MenuPrincipal()
     }
 
     processar(): void {
@@ -23,15 +17,15 @@ export default class Principal extends Processo {
         this.opcao = this.entrada.receberNumero('Qual opção desejada: ')
         switch (this.opcao) {
             case 1:
-                this.processo = TipoCadastroCliente.obterTipoCadastroCliente()
+                this.processo = new TipoCadastroCliente()
                 this.processo.processar()
                 break
             case 2:
-                this.processo = TipoAtualizarCliente.obterTipoAtualizarCliente()
+                this.processo = new TipoAtualizarCliente()
                 this.processo.processar()
                 break
             case 3:
-                this.processo = TipoListagemClientes.obterTipoListagemClientes()
+                this.processo = new TipoListagemClientes()
                 this.processo.processar()
                 break
             case 0:

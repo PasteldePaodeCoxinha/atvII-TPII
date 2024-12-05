@@ -1,14 +1,6 @@
 import Menu from "../interfaces/menu";
 
 export default class MenuTipoCadastroCliente implements Menu {
-    private static instancia: MenuTipoCadastroCliente
-    private constructor() { }
-    public static obterMenuTipoCadastroCliente() {
-        if (!this.instancia) {
-            this.instancia = new MenuTipoCadastroCliente()
-        }
-        return this.instancia
-    }
 
     mostrar(): void {
         console.clear()

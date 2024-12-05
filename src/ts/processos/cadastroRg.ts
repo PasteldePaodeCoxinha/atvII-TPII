@@ -5,16 +5,9 @@ import Documento from "../modelos/documento";
 
 export default class CadastroRg extends Processo {
     private cliente: Cliente
-    private static instancia: CadastroRg 
-    private constructor(cliente: Cliente) {
+    constructor(cliente: Cliente) {
         super()
         this.cliente = cliente
-    }
-    public static obterCadastroRg(cliente: Cliente): CadastroRg {
-        if (!CadastroRg.instancia) {
-            this.instancia = new CadastroRg(cliente)
-        }
-        return this.instancia
     }
 
     processar(): void {
@@ -28,7 +21,7 @@ export default class CadastroRg extends Processo {
             }
         }
         const dataExpedicao = this.entrada.receberData('Qual a data de expedição do RG')
-        let rg = Documento.obterDocumento(numero, TipoDocumento.RG, dataExpedicao)
+        let rg = new Documento(numero, TipoDocumento.RG, dataExpedicao)
         this.cliente.Documentos.push(rg)
     }
 }

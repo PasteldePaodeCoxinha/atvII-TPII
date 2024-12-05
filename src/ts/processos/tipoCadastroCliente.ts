@@ -3,17 +3,10 @@ import MenuTipoCadastroCliente from "../menus/menuTipoCadastroCliente";
 import CadastroClienteTitular from "./cadastroClienteTitular";
 
 export default class TipoCadastroCliente extends Processo {
-    private static instancia: TipoCadastroCliente
-    private constructor() {
-        super()
-        this.menu = MenuTipoCadastroCliente.obterMenuTipoCadastroCliente()
-    }
 
-    public static obterTipoCadastroCliente(){
-        if (!this.instancia) {
-            this.instancia = new TipoCadastroCliente()
-        }
-        return this.instancia
+    constructor() {
+        super()
+        this.menu = new MenuTipoCadastroCliente()
     }
 
     processar(): void {
@@ -22,7 +15,7 @@ export default class TipoCadastroCliente extends Processo {
 
         switch (this.opcao) {
             case 1:
-                this.processo = CadastroClienteTitular.obterCadastroClienteTitular()
+                this.processo = new CadastroClienteTitular()
                 this.processo.processar()
                 break
             default:

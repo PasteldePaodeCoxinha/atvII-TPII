@@ -1,15 +1,6 @@
 import promptSync from "prompt-sync";
 
 export default class Entrada {
-    private static instancia: Entrada
-    private constructor() { }
-
-    public static obterEntrada() {
-        if (!this.instancia) {
-            this.instancia = new Entrada()
-        }
-        return this.instancia
-    }
 
     public receberNumero(mensagem: string): number {
         let prompt = promptSync();
