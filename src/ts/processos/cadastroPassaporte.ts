@@ -16,7 +16,8 @@ export default class CadastroPassaporte extends Processo {
         while (true) {
             letras = this.entrada.receberTexto('Digite as letras do passaporte: ')
             numero = this.entrada.receberTexto('Digite os números do passaporte: ')
-            if (letras.length !== 2 || numero.length !== 6 || !isNaN(Number(numero).valueOf()) || !/^[a-zA-Z]+$/.test(letras)) {
+            
+            if (letras.length !== 2 || numero.length !== 6 || isNaN(Number(numero).valueOf()) || !/^[a-zA-Z]+$/.test(letras)) {
                 console.log("Input inválido! Digite de novo");
             } else {
                 break
