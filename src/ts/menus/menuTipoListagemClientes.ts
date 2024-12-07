@@ -7,9 +7,11 @@ export default class MenuTipoListagemClientes implements Menu {
         console.log(`****************************`)
         console.log(`| Qual o tipo de listagem desejada? `)
         console.log(`----------------------`)
+        console.log(`| 0 - Voltar`)
         console.log(`| 1 - Todos os titulares`)
         console.log(`| 2 - Pegar um titular`)
         console.log(`| 3 - Todos os dependentes de um titular específico`)
+        console.log(`| 4 - Pegar dependentes de um titular específico`)
         console.log(`----------------------`)
     }
 }

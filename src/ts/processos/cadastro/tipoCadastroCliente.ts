@@ -1,5 +1,6 @@
 import Processo from "../../abstracoes/processo";
 import MenuTipoCadastroCliente from "../../menus/menuTipoCadastroCliente";
+import CadastroClienteDependente from "./cadastroClienteDependente";
 import CadastroClienteTitular from "./cadastroClienteTitular";
 
 export default class TipoCadastroCliente extends Processo {
@@ -18,6 +19,12 @@ export default class TipoCadastroCliente extends Processo {
                 this.processo = new CadastroClienteTitular()
                 this.processo.processar()
                 break
+
+            case 2:
+                this.processo = new CadastroClienteDependente()
+                this.processo.processar()
+                break
+                
             default:
                 console.log('Opção não entendida >:(')
         }

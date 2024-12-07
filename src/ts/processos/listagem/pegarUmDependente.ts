@@ -4,17 +4,17 @@ import ImpressorCliente from "../../impressores/impressorCliente";
 import Impressor from "../../interfaces/impressor";
 import Cliente from "../../modelos/cliente";
 
-export default class PegarUmTitular extends Processo {
+export default class PegarUmDependente extends Processo {
     private clientes: Cliente[]
     private impressor!: Impressor
 
-    constructor() {
+    constructor(clientes: Cliente[]) {
         super()
-        this.clientes = Armazem.InstanciaUnica.Clientes
+        this.clientes = clientes
     }
 
     processar(): void {
-        let cliNome = this.entrada.receberTexto("Digite o nome do cliente: ")
+        let cliNome = this.entrada.receberTexto("Digite o nome do dependente: ")
         let cliente = this.clientes.filter(c => c.Nome == cliNome)[0]
 
         if (cliente) {

@@ -4,18 +4,21 @@ import ImpressorCliente from "../../impressores/impressorCliente";
 import Impressor from "../../interfaces/impressor";
 import Cliente from "../../modelos/cliente";
 
-export default class ListagemTitulares extends Processo {
-    private clientes: Cliente[]
+export default class ListagemDependentesDeTitular extends Processo {
+    private cliente: Cliente
     private impressor!: Impressor
-    constructor() {
+    constructor(cliente: Cliente) {
         super()
-        this.clientes = Armazem.InstanciaUnica.Clientes
+        this.cliente = cliente
     }
 
     processar(): void {
         console.clear()
-        console.log('Iniciando a listagem dos clientes titulares...')
-        this.clientes.forEach(cliente => {
+        console.log('Iniciando a listagem dos dependentes...')
+
+        const clientes = this.cliente.Dependentes
+
+        clientes.forEach(cliente => {
             if (this.titular(cliente)) {
                 this.impressor = new ImpressorCliente(cliente)
                 console.log(this.impressor.imprimir())

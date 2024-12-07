@@ -7,6 +7,7 @@ export default class MenuTipoCadastroCliente implements Menu {
         console.log(`****************************`)
         console.log(`| Qual o tipo do cliente para cadastro? `)
         console.log(`----------------------`)
+        console.log(`| 0 - Voltar`)
         console.log(`| 1 - Titular`)
         console.log(`| 2 - Dependente`)
         console.log(`----------------------`)
