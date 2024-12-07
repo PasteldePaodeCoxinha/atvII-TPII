@@ -1,12 +1,12 @@
-import Processo from "../abstracoes/processo";
-import MenuTipoAtualizarCliente from "../menus/menuTipoAtualizarCliente";
-import AtualizarClienteTitular from "./atualizarClienteTitular";
+import Processo from "../../abstracoes/processo";
+import MenuTipoCadastroCliente from "../../menus/menuTipoCadastroCliente";
+import CadastroClienteTitular from "./cadastroClienteTitular";
 
-export default class TipoAtualizarCliente extends Processo {
+export default class TipoCadastroCliente extends Processo {
 
     constructor() {
         super()
-        this.menu = new MenuTipoAtualizarCliente()
+        this.menu = new MenuTipoCadastroCliente()
     }
 
     processar(): void {
@@ -15,12 +15,11 @@ export default class TipoAtualizarCliente extends Processo {
 
         switch (this.opcao) {
             case 1:
-                this.processo = new AtualizarClienteTitular()
+                this.processo = new CadastroClienteTitular()
                 this.processo.processar()
                 break
             default:
                 console.log('Opção não entendida >:(')
         }
-
     }
 }
