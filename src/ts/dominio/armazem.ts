@@ -14,4 +14,8 @@ export default class Armazem {
         return this.clientes
     }
 
+    public DelClientes(nome: string){
+        this.clientes = this.clientes.filter(c => c.Nome !== nome)
+    }
+
 }
