@@ -1,3 +1,5 @@
-export default abstract class Excluir {
+import Processo from "./processo";
+
+export default abstract class Excluir extends Processo {
     
 }

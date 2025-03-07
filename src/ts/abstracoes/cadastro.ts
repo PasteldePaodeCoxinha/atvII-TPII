@@ -1,3 +1,5 @@
-export default abstract class Cadastro {
+import Processo from "./processo";
+
+export default abstract class Cadastro extends Processo {
     
 }
