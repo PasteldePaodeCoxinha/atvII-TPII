@@ -1,13 +1,21 @@
 import Processo from "../abstracoes/processo";
 import MenuPrincipal from "../menus/menuPricipal";
-import TipoAtualizarCliente from "./atualizar/tipoAtualizarCliente";
-import TipoCadastroCliente from "./cadastro/tipoCadastroCliente";
-import TipoExclusaoClientes from "./excluir/tipoExclusaoClientes";
-import TipoListagemClientes from "./listagem/tipoListagemClientes";
 
 export default class Principal extends Processo {
   constructor() {
     super();
+    this.menu = new MenuPrincipal();
   }
-  while() {}
+
+  public processar() {
+    while (this.execucao) {
+      this.menu.mostrar();
+      this.opcao = this.entrada.receberNumero(`Digite a opção: `);
+      switch (this.opcao) {
+        case 0:
+          this.execucao = false;
+          break;
+      }
+    }
+  }
 }
