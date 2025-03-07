@@ -11,7 +11,7 @@ export default class MenuTipoListagemClientes implements Menu {
         console.log(`| 1 - Todos os titulares`)
         console.log(`| 2 - Pegar um titular`)
         console.log(`| 3 - Todos os dependentes de um titular específico`)
-        console.log(`| 4 - Pegar dependentes de um titular específico`)
+        console.log(`| 4 - Pegar dependente de um titular específico`)
         console.log(`----------------------`)
     }
 }
