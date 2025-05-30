@@ -1,4 +1,3 @@
-import { TipoDocumento } from "../enumeracoes/TipoDocumento"
 import Documento from "./documento"
 import Endereco from "./endereco"
 import Telefone from "./telefone"
