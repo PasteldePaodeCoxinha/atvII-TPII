@@ -1,15 +1,17 @@
-import Navegar from "../abstracoes/navegar";
-import MenuPrincipal from "../menus/menuPricipal";
-import TipoCadastro from "./cadastro/TipoCadastro";
+import Navegar from "../../abstracoes/navegar";
+import Armazem from "../../dominio/armazem";
+import MenuTipoCadastroCliente from "../../menus/menuTipoCadastroCliente";
+import CadastroTitular from "./CadastroTitular";
 
-export default class Principal extends Navegar {
+export default class TipoCadastro extends Navegar{
     constructor(){
         super()
         this.opcao = 0
-        this.menu = new MenuPrincipal()
+        this.menu = new MenuTipoCadastroCliente()
     }
 
     navegar(): void {
+        
         let loop = true
         while (loop) {
             this.menu.mostrar()
@@ -20,17 +22,12 @@ export default class Principal extends Navegar {
                     loop = false
                     break;
                 case 1:
-                    const funcao = new TipoCadastro()
-                    funcao.navegar()
+                    const cadastro = new CadastroTitular()
+                    Armazem.InstanciaUnica.Clientes.push(cadastro.cadastrar())
+                    console.log(Armazem.InstanciaUnica.Clientes);
                     break;
                 case 2:
                     console.log("2");
-                    break;
-                case 3:
-                    console.log("3");
-                    break;
-                case 4:
-                    console.log("4");
                     break;
                 default:
                     console.log("COMANDO NÃO RECONHECIDO!");
