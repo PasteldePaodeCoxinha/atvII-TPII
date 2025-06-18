@@ -34,6 +34,7 @@ export default class Principal extends Navegar {
                     break;
                 default:
                     console.log("COMANDO NÃO RECONHECIDO!");
+                    break
             }
         }
     }

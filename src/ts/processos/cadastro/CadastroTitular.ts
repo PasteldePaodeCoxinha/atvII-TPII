@@ -1,5 +1,7 @@
 import Cadastro from "../../abstracoes/cadastro";
+import MenuTipoDocumento from "../../menus/menuTipoDocumento";
 import Cliente from "../../modelos/cliente";
+import CadastroDocumento from "./CadastroDocumento";
 
 export default class CadastroTitular extends Cadastro<Cliente>{
     constructor(){
@@ -7,17 +9,25 @@ export default class CadastroTitular extends Cadastro<Cliente>{
     }
 
     cadastrar(): Cliente {
-        const nome = this.entrada.receberTexto("Digite o nome: ")
+        const nome = this.entrada.receberTexto("Digite o nome:")
 
-        const nomeSocial = this.entrada.receberTexto("Digite o nome social: ")
+        const nomeSocial = this.entrada.receberTexto("Digite o nome social:")
 
-        const dia = this.entrada.receberTexto("Digite o dia do nascimento: ")
+        const dataNasc = this.entrada.receberData("Digite a data de nascimento")
         
-        const mes = this.entrada.receberTexto("Digite o mês do nascimento: ")
+        this.cadastrando = new Cliente(nome, nomeSocial, new Date(dataNasc))
 
-        const ano = this.entrada.receberTexto("Digite o ano do nascimento: ")
+        const menuCadastroDocumento = new MenuTipoDocumento()
+        const documentoCadastrar = new CadastroDocumento(this.cadastrando)
+        while (true) {
+            menuCadastroDocumento.mostrar()
+            this.cadastrando.AddDocumento = documentoCadastrar.cadastrar()
+            const continuarCadastroDocumento = this.entrada.receberTexto("Continuar cadastro de documento (S/N):")
+            if (continuarCadastroDocumento.toLocaleLowerCase() === "n" || this.cadastrando.Documentos.length >= 3) {
+                break
+            }
+        }
 
-        const dataNasc = (dia + "-" + mes + "-" +ano)
-        return new Cliente(nome, nomeSocial, new Date(dataNasc))
+        return this.cadastrando
     }
 }
