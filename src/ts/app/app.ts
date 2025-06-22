@@ -1,7 +1,7 @@
 import Principal from "../processos/principal";
 
-const principal = new Principal()
+const principal = new Principal();
 
-principal.navegar()
+principal.navegar();
 
 console.log("Até mais!");
