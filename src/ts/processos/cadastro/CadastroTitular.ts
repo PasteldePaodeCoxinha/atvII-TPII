@@ -1,4 +1,5 @@
 import Cadastro from "../../abstracoes/cadastro";
+import Armazem from "../../dominio/armazem";
 import MenuTipoDocumento from "../../menus/menuTipoDocumento";
 import Cliente from "../../modelos/cliente";
 import CadastroDocumento from "./CadastroDocumento";
@@ -9,7 +10,18 @@ export default class CadastroTitular extends Cadastro<Cliente>{
     }
 
     cadastrar(): Cliente {
-        const nome = this.entrada.receberTexto("Digite o nome:")
+        let nome = this.entrada.receberTexto("Digite o nome:")
+        while (nome === "" || Armazem.InstanciaUnica.Clientes.filter(c => c.Nome === nome).length > 0) {
+            let msgNome = ""
+            if (nome === "") {
+                msgNome = "Digite um nome:"
+            }
+            if (Armazem.InstanciaUnica.Clientes.filter(c => c.Nome === nome).length > 0) {
+                msgNome = "Esse nome já está cadastrado, digite outro:"
+            }
+
+            nome = this.entrada.receberTexto(msgNome)
+        }
 
         const nomeSocial = this.entrada.receberTexto("Digite o nome social:")
 
