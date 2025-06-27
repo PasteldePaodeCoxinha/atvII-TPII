@@ -39,7 +39,7 @@ export default class Cliente {
     public set Dependentes(clientes: Cliente[]) { this.dependentes = clientes }
 
     public EdiTelefones(numero: string, novoNumero: string, novoDdd: string) {
-        let telefone = this.telefones.filter(t => t.Numero == numero)[0]
+        let telefone = this.telefones.find(t => t.Numero == numero)
         if (telefone) {
             if (novoNumero) { telefone.Numero = novoNumero }
             if (novoDdd) { telefone.Ddd = novoDdd }
