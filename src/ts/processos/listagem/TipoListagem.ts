@@ -1,16 +1,16 @@
-import Navegar from "../abstracoes/navegar";
-import MenuPrincipal from "../menus/menuPricipal";
-import TipoCadastro from "./cadastro/TipoCadastro";
-import TipoListagem from "./listagem/TipoListagem";
+import Navegar from "../../abstracoes/navegar";
+import MenuTipoListagemClientes from "../../menus/menuTipoListagemClientes";
+import ListarTodosClientesTitular from "./ListarTodosClientesTitular";
 
-export default class Principal extends Navegar {
+export default class TipoListagem extends Navegar{
     constructor(){
         super()
         this.opcao = 0
-        this.menu = new MenuPrincipal()
+        this.menu = new MenuTipoListagemClientes()
     }
 
     navegar(): void {
+        
         let loop = true
         while (loop) {
             this.menu.mostrar()
@@ -21,10 +21,10 @@ export default class Principal extends Navegar {
                     loop = false
                     break;
                 case 1:
-                    new TipoCadastro().navegar()
+                    new ListarTodosClientesTitular().listar()
                     break;
                 case 2:
-                    new TipoListagem().navegar()
+                    console.log("2");
                     break;
                 case 3:
                     console.log("3");
@@ -34,7 +34,6 @@ export default class Principal extends Navegar {
                     break;
                 default:
                     console.log("COMANDO NÃO RECONHECIDO!");
-                    break
             }
         }
     }
