@@ -1,7 +1,7 @@
 import Cadastro from "../../abstracoes/cadastro";
 import Endereco from "../../modelos/endereco";
 
-export default class CadastroTelefone extends Cadastro<Endereco> {
+export default class CadastroEndereco extends Cadastro<Endereco> {
   constructor() {
     super();
   }

@@ -3,6 +3,7 @@ import Armazem from "../../dominio/armazem";
 import MenuTipoDocumento from "../../menus/menuTipoDocumento";
 import Cliente from "../../modelos/cliente";
 import CadastroDocumento from "./CadastroDocumento";
+import CadastroEndereco from "./CadastroEndereco";
 import CadastroTelefone from "./CadastroTelefone";
 
 export default class CadastroTitular extends Cadastro<Cliente>{
@@ -59,6 +60,9 @@ export default class CadastroTitular extends Cadastro<Cliente>{
                 break
             }
         }
+
+        const enderecoCadastrar = new CadastroEndereco()
+        this.cadastrando.Endereco = enderecoCadastrar.cadastrar()
 
         return this.cadastrando
     }
