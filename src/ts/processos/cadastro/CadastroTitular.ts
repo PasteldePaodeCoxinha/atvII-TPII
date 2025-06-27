@@ -3,6 +3,7 @@ import Armazem from "../../dominio/armazem";
 import MenuTipoDocumento from "../../menus/menuTipoDocumento";
 import Cliente from "../../modelos/cliente";
 import CadastroDocumento from "./CadastroDocumento";
+import CadastroTelefone from "./CadastroTelefone";
 
 export default class CadastroTitular extends Cadastro<Cliente>{
     constructor(){
@@ -34,8 +35,26 @@ export default class CadastroTitular extends Cadastro<Cliente>{
         while (true) {
             menuCadastroDocumento.mostrar()
             this.cadastrando.AddDocumento = documentoCadastrar.cadastrar()
+
             const continuarCadastroDocumento = this.entrada.receberTexto("Continuar cadastro de documento (S/N):")
-            if (continuarCadastroDocumento.toLocaleLowerCase() === "n" || this.cadastrando.Documentos.length >= 3) {
+            if (continuarCadastroDocumento.toLocaleLowerCase() === "n") {
+                break
+            }
+            if (this.cadastrando.Documentos.length >= 3) {
+                console.log("Um usuário pode ter apenas 3 documentos! Cancelando cadastro de documento.");
+                break
+            }
+        }
+
+        const telefoneCadastrar = new CadastroTelefone(this.cadastrando)
+        while (true) {
+            this.cadastrando.AddTelefone = telefoneCadastrar.cadastrar()
+
+            const continuarCadastroTelefone = this.entrada.receberTexto("Continuar cadastro de documento")
+            if (continuarCadastroTelefone.toLocaleLowerCase() === "n") {
+                break
+            }
+            if (this.cadastrando.Telefones.length >= 2) {
                 break
             }
         }
