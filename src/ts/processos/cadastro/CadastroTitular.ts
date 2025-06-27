@@ -55,6 +55,7 @@ export default class CadastroTitular extends Cadastro<Cliente>{
                 break
             }
             if (this.cadastrando.Telefones.length >= 2) {
+                console.log("Um usuário pode ter apenas 2 telefones! Cancelando cadastro de telefone.");
                 break
             }
         }
