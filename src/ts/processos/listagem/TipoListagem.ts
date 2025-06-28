@@ -1,6 +1,7 @@
 import Navegar from "../../abstracoes/navegar";
 import MenuTipoListagemClientes from "../../menus/menuTipoListagemClientes";
 import ListarTodosClientesTitular from "./ListarTodosClientesTitular";
+import ListarTodosDependentesDeTitular from "./ListarTodosDependentesDeTitular";
 import ListarUmClienteTitular from "./ListarUmClienteTitular";
 
 export default class TipoListagem extends Navegar{
@@ -28,7 +29,7 @@ export default class TipoListagem extends Navegar{
                     new ListarUmClienteTitular().listar()
                     break;
                 case 3:
-                    console.log("3");
+                    new ListarTodosDependentesDeTitular().listar()
                     break;
                 case 4:
                     console.log("4");

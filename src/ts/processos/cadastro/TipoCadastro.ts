@@ -1,6 +1,7 @@
 import Navegar from "../../abstracoes/navegar";
 import Armazem from "../../dominio/armazem";
 import MenuTipoCadastroCliente from "../../menus/menuTipoCadastroCliente";
+import CadastroDependente from "./CadastroDependente";
 import CadastroTitular from "./CadastroTitular";
 
 export default class TipoCadastro extends Navegar{
@@ -22,11 +23,10 @@ export default class TipoCadastro extends Navegar{
                     loop = false
                     break;
                 case 1:
-                    const cadastro = new CadastroTitular()
-                    Armazem.InstanciaUnica.Clientes.push(cadastro.cadastrar())
+                    Armazem.InstanciaUnica.Clientes.push(new CadastroTitular().cadastrar())
                     break;
                 case 2:
-                    console.log("2");
+                    Armazem.InstanciaUnica.Clientes.push(new CadastroDependente().cadastrar())
                     break;
                 default:
                     console.log("COMANDO NÃO RECONHECIDO!");
