@@ -14,7 +14,7 @@ export default class CadastroDocumento extends CadastroSuplementar<
 
   cadastrar(): Documento {
     while (true) {
-      let opcao = this.entrada.receberNumero("Digite aqui: ");
+      let opcao = this.entrada.receberNumero("Digite aqui:");
       switch (opcao) {
         case 1:
           if (

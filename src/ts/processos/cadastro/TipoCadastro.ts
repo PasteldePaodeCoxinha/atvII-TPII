@@ -24,7 +24,6 @@ export default class TipoCadastro extends Navegar{
                 case 1:
                     const cadastro = new CadastroTitular()
                     Armazem.InstanciaUnica.Clientes.push(cadastro.cadastrar())
-                    console.log(Armazem.InstanciaUnica.Clientes);
                     break;
                 case 2:
                     console.log("2");
