@@ -13,13 +13,10 @@ export default class ListarTodosClientesTitular extends Listagem {
         console.log(new ImpressorCliente(c).imprimir());
       });
 
-      const continuarListagemTodosClientes = this.entrada.receberTexto(
-        "Deseja sair da listagem de titulares (S/N):"
-      );
+      const continuarListagemTodosClientes =
+        this.entrada.receberTexto("Digite qualquer botão para sair da listagem:");
 
-      if (continuarListagemTodosClientes.toLocaleLowerCase() === "s") {
-        break;
-      }
+      break;
     }
   }
 }

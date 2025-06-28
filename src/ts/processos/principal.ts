@@ -14,7 +14,7 @@ export default class Principal extends Navegar {
         let loop = true
         while (loop) {
             this.menu.mostrar()
-            this.opcao = this.entrada.receberNumero(`Digite sua opção: `)
+            this.opcao = this.entrada.receberNumero(`Digite sua opção:`)
             
             switch (this.opcao) {
                 case 0:
