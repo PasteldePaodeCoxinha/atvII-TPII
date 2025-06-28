@@ -33,10 +33,13 @@ export default class Cliente {
 
     public set Nome(nome: string) { this.nome = nome }
     public set NomeSocial(nomeSocial: string) { this.nomeSocial = nomeSocial }
-    public set AddTelefone(telefone: Telefone) { this.telefones.push(telefone) }
-    public set AddDocumento(documento: Documento) { this.documentos.push(documento) }
+    public set Telefone(telefones: Telefone[]) { this.telefones = telefones }
+    public set Documento(documentos: Documento[]) { this.documentos = documentos }
     public set Endereco(endereco: Endereco) { this.endereco = endereco }
     public set AddDependente(cliente: Cliente) { this.dependentes.push(cliente) }
+
+    public AddTelefone(telefone: Telefone) { this.telefones.push(telefone) }
+    public AddDocumento(documento: Documento) { this.documentos.push(documento) }
 
     public EdiTelefones(numero: string, novoNumero: string, novoDdd: string) {
         let telefone = this.telefones.find(t => t.Numero == numero)

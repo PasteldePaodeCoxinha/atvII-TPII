@@ -41,7 +41,7 @@ export default class CadastroTitular extends Cadastro<Cliente> {
     const documentoCadastrar = new CadastroDocumento(this.cadastrando);
     while (true) {
       menuCadastroDocumento.mostrar();
-      this.cadastrando.AddDocumento = documentoCadastrar.cadastrar();
+      this.cadastrando.AddDocumento(documentoCadastrar.cadastrar());
 
       const continuarCadastroDocumento = this.entrada.receberTexto(
         "Continuar cadastro de documento (S/N):"
@@ -59,7 +59,7 @@ export default class CadastroTitular extends Cadastro<Cliente> {
 
     const telefoneCadastrar = new CadastroTelefone(this.cadastrando);
     while (true) {
-      this.cadastrando.AddTelefone = telefoneCadastrar.cadastrar();
+      this.cadastrando.AddTelefone(telefoneCadastrar.cadastrar());
 
       const continuarCadastroTelefone = this.entrada.receberTexto(
         "Continuar cadastro de telefone (S/N):"
