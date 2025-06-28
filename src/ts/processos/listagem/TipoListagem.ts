@@ -1,6 +1,7 @@
 import Navegar from "../../abstracoes/navegar";
 import MenuTipoListagemClientes from "../../menus/menuTipoListagemClientes";
 import ListarTodosClientesTitular from "./ListarTodosClientesTitular";
+import ListarUmClienteTitular from "./ListarUmClienteTitular";
 
 export default class TipoListagem extends Navegar{
     constructor(){
@@ -24,7 +25,7 @@ export default class TipoListagem extends Navegar{
                     new ListarTodosClientesTitular().listar()
                     break;
                 case 2:
-                    console.log("2");
+                    new ListarUmClienteTitular().listar()
                     break;
                 case 3:
                     console.log("3");

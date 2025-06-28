@@ -14,7 +14,7 @@ export default class ImpressorCliente implements Impressor {
 
   imprimir(): string {
     let impressao =
-      `****************************\n****************************\n` +
+      `****************************\n` +
       `| Nome: ${this.cliente.Nome}\n` +
       `| Nome social: ${this.cliente.NomeSocial}\n` +
       `| Data de nascimento: ${this.cliente.DataNascimento.toLocaleDateString()}\n` +
