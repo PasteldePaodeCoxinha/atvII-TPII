@@ -36,7 +36,7 @@ export default class Cliente {
     public set AddTelefone(telefone: Telefone) { this.telefones.push(telefone) }
     public set AddDocumento(documento: Documento) { this.documentos.push(documento) }
     public set Endereco(endereco: Endereco) { this.endereco = endereco }
-    public set Dependentes(clientes: Cliente[]) { this.dependentes = clientes }
+    public set AddDependente(cliente: Cliente) { this.dependentes.push(cliente) }
 
     public EdiTelefones(numero: string, novoNumero: string, novoDdd: string) {
         let telefone = this.telefones.find(t => t.Numero == numero)
