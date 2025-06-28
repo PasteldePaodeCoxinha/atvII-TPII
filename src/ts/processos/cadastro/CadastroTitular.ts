@@ -74,14 +74,9 @@ export default class CadastroTitular extends Cadastro<Cliente> {
         break;
       }
     }
-
-    const escolhaCadastroEndereco = this.entrada.receberTexto(
-      "Deseja cadastrar um endereço (S/N):"
-    );
-    if (escolhaCadastroEndereco.toLocaleLowerCase() === "s") {
-      const enderecoCadastrar = new CadastroEndereco();
-      this.cadastrando.Endereco = enderecoCadastrar.cadastrar();
-    }
+    
+    const enderecoCadastrar = new CadastroEndereco();
+    this.cadastrando.Endereco = enderecoCadastrar.cadastrar();
 
     return this.cadastrando;
   }

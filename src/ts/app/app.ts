@@ -9,7 +9,7 @@ import Principal from "../processos/principal";
 const principal = new Principal();
 
 const cliente1 = new Cliente("Joao Silva", "Joãozinho", new Date("1990-05-10"));
-cliente1.Telefone = [new Telefone("11", "999999999")];
+cliente1.Telefones = [new Telefone("11", "999999999")];
 cliente1.Documento = [
   new Documento("123456789", TipoDocumento.CPF, new Date("2010-03-20")),
   new Documento("963852741", TipoDocumento.RG, new Date("2010-03-20")),
@@ -23,15 +23,41 @@ cliente1.Endereco = new Endereco(
   "01000-000"
 );
 
-const dependente1 = new Cliente(
+const dependente1Cliente1 = new Cliente(
   "Pedro Silva",
   "Pedrinho",
   new Date("2012-11-05")
 );
-cliente1.AddDependente = dependente1;
+dependente1Cliente1.Telefones = [new Telefone("33", "156456123")]
+dependente1Cliente1.Documento = [
+  new Documento("214635434", TipoDocumento.CPF, new Date("2010-03-20")),
+];
+
+const dependente2Cliente1 = new Cliente(
+  "Joserssa Silva",
+  "",
+  new Date("2012-11-05")
+);
+dependente1Cliente1.Telefones = cliente1.Telefones
+dependente1Cliente1.Documento = [
+  new Documento("15214566", TipoDocumento.CPF, new Date("2010-03-20")),
+];
+
+const dependente3Cliente1 = new Cliente(
+  "Gilberso Silva",
+  "",
+  new Date("2012-11-05")
+);
+dependente1Cliente1.Telefones = cliente1.Telefones
+dependente1Cliente1.Documento = [
+  new Documento("214635434", TipoDocumento.CPF, new Date("2010-03-20")),
+];
+
+
+cliente1.Dependentes = [dependente1Cliente1, dependente2Cliente1, dependente3Cliente1];
 
 const cliente2 = new Cliente("Maria Oliveira", "Mari", new Date("1985-09-20"));
-cliente2.Telefone = [new Telefone("21", "988888888")]
+cliente2.Telefones = [new Telefone("21", "988888888")]
 cliente2.Documento = [new Documento(
   "987654321",
   TipoDocumento.RG,
@@ -46,8 +72,28 @@ cliente2.Endereco = new Endereco(
   "22000-000"
 );
 
+const dependente1Cliente2 = new Cliente(
+  "Joserssa Silva",
+  "",
+  new Date("2012-11-05")
+);
+dependente1Cliente1.Telefones = cliente2.Telefones
+dependente1Cliente1.Documento = [
+  new Documento("456546879", TipoDocumento.CPF, new Date("2010-03-20")),
+];
+
+const dependente2Cliente2 = new Cliente(
+  "Gilbersa Silva",
+  "",
+  new Date("2012-11-05")
+);
+dependente1Cliente1.Telefones = cliente2.Telefones
+dependente1Cliente1.Documento = [
+  new Documento("546452354", TipoDocumento.CPF, new Date("2010-03-20")),
+];
+
 const cliente3 = new Cliente("Carlos Souza", "Carlão", new Date("1978-01-01"));
-cliente3.Telefone = [new Telefone("31", "977777777")];
+cliente3.Telefones = [new Telefone("31", "977777777")];
 cliente3.Documento = [new Documento(
   "111222333",
   TipoDocumento.Passaporte,
@@ -63,7 +109,7 @@ cliente3.Endereco = new Endereco(
 );
 
 const cliente4 = new Cliente("Ana Lima", "Aninha", new Date("1995-03-30"));
-cliente4.Telefone = [new Telefone("41", "966666666")];
+cliente4.Telefones = [new Telefone("41", "966666666")];
 cliente4.Documento = [new Documento(
   "444555666",
   TipoDocumento.CPF,
@@ -83,7 +129,7 @@ const cliente5 = new Cliente(
   "Luquinhas",
   new Date("2000-12-12")
 );
-cliente5.Telefone = [new Telefone("51", "955555555")];
+cliente5.Telefones = [new Telefone("51", "955555555")];
 cliente5.Documento = [new Documento(
   "777888999",
   TipoDocumento.RG,
