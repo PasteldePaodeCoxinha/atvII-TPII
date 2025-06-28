@@ -11,6 +11,7 @@ const principal = new Principal();
 const cliente1 = new Cliente("João Silva", "Joãozinho", new Date("1990-05-10"))
 cliente1.AddTelefone = new Telefone("11", "999999999")
 cliente1.AddDocumento = new Documento("123456789", TipoDocumento.CPF, new Date("2010-03-20"))
+cliente1.AddDocumento = new Documento("963852741", TipoDocumento.RG, new Date("2010-03-20"))
 cliente1.Endereco = new Endereco("Rua A", "Centro", "São Paulo", "SP", "Brasil", "01000-000")
 
 const dependente1 = new Cliente("Pedro Silva", "Pedrinho", new Date("2012-11-05"))
