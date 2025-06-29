@@ -1,6 +1,5 @@
 import Excluir from "../../abstracoes/excluir";
 import Armazem from "../../dominio/armazem";
-import Cliente from "../../modelos/cliente";
 
 export default class ExcluirClienteTitular extends Excluir {
   constructor() {
