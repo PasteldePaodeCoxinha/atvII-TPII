@@ -77,8 +77,8 @@ const dependente1Cliente2 = new Cliente(
   "",
   new Date("2012-11-05")
 );
-dependente1Cliente1.Telefones = cliente2.Telefones
-dependente1Cliente1.Documento = [
+dependente1Cliente2.Telefones = cliente2.Telefones
+dependente1Cliente2.Documento = [
   new Documento("456546879", TipoDocumento.CPF, new Date("2010-03-20")),
 ];
 
@@ -87,10 +87,12 @@ const dependente2Cliente2 = new Cliente(
   "",
   new Date("2012-11-05")
 );
-dependente1Cliente1.Telefones = cliente2.Telefones
-dependente1Cliente1.Documento = [
+dependente2Cliente2.Telefones = cliente2.Telefones
+dependente2Cliente2.Documento = [
   new Documento("546452354", TipoDocumento.CPF, new Date("2010-03-20")),
 ];
+
+cliente2.Dependentes = [dependente1Cliente2, dependente2Cliente2]
 
 const cliente3 = new Cliente("Carlos Souza", "Carlão", new Date("1978-01-01"));
 cliente3.Telefones = [new Telefone("31", "977777777")];

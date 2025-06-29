@@ -1,4 +1,4 @@
-import Cadastro from "../../abstracoes/cadastro";
+import CadastroSuplementar from "../../abstracoes/cadastroSuplementar";
 import Armazem from "../../dominio/armazem";
 import MenuTipoDocumento from "../../menus/menuTipoDocumento";
 import Cliente from "../../modelos/cliente";
@@ -6,44 +6,26 @@ import CadastroDocumento from "./CadastroDocumento";
 import CadastroEndereco from "./CadastroEndereco";
 import CadastroTelefone from "./CadastroTelefone";
 
-export default class CadastroDependente extends Cadastro<Cliente> {
-  constructor() {
-    super();
+export default class CadastroDependente extends CadastroSuplementar<
+  Cliente,
+  Cliente
+> {
+  constructor(titular: Cliente) {
+    super(titular);
   }
 
   cadastrar(): Cliente {
-    let nomeTitular = this.entrada.receberTexto("Digite o nome do titular:");
-    while (
-      nomeTitular === "" ||
-      Armazem.InstanciaUnica.Clientes.filter((c) => c.Nome === nomeTitular)
-        .length <= 0
-    ) {
-      let msgNomeTitular = "";
-      if (nomeTitular === "") {
-        msgNomeTitular = "Digite um nome:";
-      }
-      if (
-        Armazem.InstanciaUnica.Clientes.filter((c) => c.Nome === nome).length <=
-        0
-      ) {
-        msgNomeTitular = "Esse nome não está cadastrado, digite outro:";
-      }
-
-      nomeTitular = this.entrada.receberTexto(nomeTitular);
-    }
-
     let nome = this.entrada.receberTexto("Digite o nome:");
     while (
       nome === "" ||
-      Armazem.InstanciaUnica.Clientes.filter((c) => c.Nome === nome).length > 0
+      this.responsavel.Dependentes.filter((c) => c.Nome === nome).length > 0
     ) {
       let msgNome = "";
       if (nome === "") {
         msgNome = "Digite um nome:";
       }
       if (
-        Armazem.InstanciaUnica.Clientes.filter((c) => c.Nome === nome).length >
-        0
+        this.responsavel.Dependentes.filter((c) => c.Nome === nome).length > 0
       ) {
         msgNome = "Esse nome já está cadastrado, digite outro:";
       }
@@ -55,13 +37,13 @@ export default class CadastroDependente extends Cadastro<Cliente> {
 
     const dataNasc = this.entrada.receberData("Digite a data de nascimento");
 
-    this.cadastrando = new Cliente(nome, nomeSocial, new Date(dataNasc));
+    const dependente = new Cliente(nome, nomeSocial, new Date(dataNasc));
 
     const menuCadastroDocumento = new MenuTipoDocumento();
-    const documentoCadastrar = new CadastroDocumento(this.cadastrando);
+    const documentoCadastrar = new CadastroDocumento(dependente);
     while (true) {
       menuCadastroDocumento.mostrar();
-      this.cadastrando.AddDocumento(documentoCadastrar.cadastrar());
+      dependente.AddDocumento(documentoCadastrar.cadastrar());
 
       const continuarCadastroDocumento = this.entrada.receberTexto(
         "Continuar cadastro de documento (S/N):"
@@ -69,7 +51,7 @@ export default class CadastroDependente extends Cadastro<Cliente> {
       if (continuarCadastroDocumento.toLocaleLowerCase() === "n") {
         break;
       }
-      if (this.cadastrando.Documentos.length >= 3) {
+      if (dependente.Documentos.length >= 3) {
         console.log(
           "Um cliente pode ter apenas 3 documentos! Cancelando cadastro de documento."
         );
@@ -77,32 +59,44 @@ export default class CadastroDependente extends Cadastro<Cliente> {
       }
     }
 
-    const telefoneCadastrar = new CadastroTelefone(this.cadastrando);
-    while (true) {
-      this.cadastrando.AddTelefone(telefoneCadastrar.cadastrar());
+    if (
+      this.entrada
+        .receberTexto("Deseja cadastrar um telefone (S/N):")
+        .toLocaleLowerCase() === "s"
+    ) {
+      const telefoneCadastrar = new CadastroTelefone(dependente);
+      while (true) {
+        dependente.AddTelefone(telefoneCadastrar.cadastrar());
 
-      const continuarCadastroTelefone = this.entrada.receberTexto(
-        "Continuar cadastro de telefone (S/N):"
-      );
-      if (continuarCadastroTelefone.toLocaleLowerCase() === "n") {
-        break;
+        if (
+          this.entrada
+            .receberTexto("Continuar cadastro de telefone (S/N):")
+            .toLocaleLowerCase() === "n"
+        ) {
+          break;
+        }
+        if (dependente.Telefones.length >= 2) {
+          console.log(
+            "Um cliente pode ter apenas 2 telefones! Cancelando cadastro de telefone."
+          );
+          break;
+        }
       }
-      if (this.cadastrando.Telefones.length >= 2) {
-        console.log(
-          "Um cliente pode ter apenas 2 telefones! Cancelando cadastro de telefone."
-        );
-        break;
-      }
+    } else {
+      dependente.Telefones = this.responsavel.Telefones;
     }
 
-    const escolhaCadastroEndereco = this.entrada.receberTexto(
-      "Deseja cadastrar um endereço (S/N):"
-    );
-    if (escolhaCadastroEndereco.toLocaleLowerCase() === "s") {
+    if (
+      this.entrada
+        .receberTexto("Deseja cadastrar um endereço (S/N):")
+        .toLocaleLowerCase() === "s"
+    ) {
       const enderecoCadastrar = new CadastroEndereco();
-      this.cadastrando.Endereco = enderecoCadastrar.cadastrar();
+      dependente.Endereco = enderecoCadastrar.cadastrar();
+    } else {
+      dependente.Endereco = this.responsavel.Endereco
     }
 
-    return this.cadastrando;
+    return dependente;
   }
 }
