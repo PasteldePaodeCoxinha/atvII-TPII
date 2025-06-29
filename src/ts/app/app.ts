@@ -73,7 +73,7 @@ cliente2.Endereco = new Endereco(
 );
 
 const dependente1Cliente2 = new Cliente(
-  "Joserssa Silva",
+  "Joserssa Oliveira",
   "",
   new Date("2012-11-05")
 );
@@ -83,7 +83,7 @@ dependente1Cliente2.Documento = [
 ];
 
 const dependente2Cliente2 = new Cliente(
-  "Gilbersa Silva",
+  "Gilbersa Oliveira",
   "",
   new Date("2012-11-05")
 );

@@ -1,5 +1,6 @@
 import Navegar from "../../abstracoes/navegar"
 import MenuTipoAtualizarCliente from "../../menus/menuTipoAtualizarCliente"
+import AtualizarClienteDependente from "./AtualizarClienteDependente"
 import AtualizarClienteTitular from "./AtualizarClienteTitular"
 
 export default class TipoAtualizar extends Navegar{
@@ -24,7 +25,7 @@ export default class TipoAtualizar extends Navegar{
                     new AtualizarClienteTitular().atualizar()
                     break;
                 case 2:
-                    console.log("2");
+                    new AtualizarClienteDependente().atualizar()
                     break;
                 default:
                     console.log("COMANDO NÃO RECONHECIDO!");
