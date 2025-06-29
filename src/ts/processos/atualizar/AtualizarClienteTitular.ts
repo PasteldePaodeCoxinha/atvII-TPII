@@ -151,6 +151,37 @@ export default class AtualizarClienteTitular extends Atualizar {
 
     if (
       this.entrada
+        .receberTexto("Deseja deletar um telefone (S/N):")
+        .toLocaleLowerCase() === "s"
+    ) {
+      while (true) {
+        if (this.atualizando.Telefones.length <= 1) {
+          console.log("Cliente precisa de pelo menos um telefone, cancelando deleção de telefone!");
+          break
+        }
+
+        const numeroTel = this.entrada.receberTexto(
+          "Digite o número de telefone que deseja excluir (S/N):"
+        );
+
+        const tamanhoAntigo = this.atualizando.Telefones.length;
+        this.atualizando.Telefones = this.atualizando.Telefones.filter(
+          (t) => t.Numero !== numeroTel
+        );
+
+        if (this.atualizando.Telefones.length === tamanhoAntigo) {
+          console.log("Não existe telefone com esse número!");
+        }
+
+
+        if (this.entrada.receberTexto("Deseja deletar outro telefone (S/N):").toLocaleLowerCase() === "n") {
+          break
+        }
+      }
+    }
+
+    if (
+      this.entrada
         .receberTexto("Deseja editar o endereço (S/N):")
         .toLocaleLowerCase() === "s"
     ) {
