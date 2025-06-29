@@ -2,6 +2,7 @@ import Navegar from "../abstracoes/navegar";
 import MenuPrincipal from "../menus/menuPricipal";
 import TipoAtualizar from "./atualizar/TipoAtualizar";
 import TipoCadastro from "./cadastro/TipoCadastro";
+import TipoExcluir from "./excluir/TipoExcluir";
 import TipoListagem from "./listagem/TipoListagem";
 
 export default class Principal extends Navegar {
@@ -31,7 +32,7 @@ export default class Principal extends Navegar {
                     new TipoAtualizar().navegar()
                     break;
                 case 4:
-                    console.log("4");
+                    new TipoExcluir().navegar()
                     break;
                 default:
                     console.log("COMANDO NÃO RECONHECIDO!");

@@ -17,9 +17,4 @@ export default class Armazem {
     public DelClientes(nome: string){
         this.clientes = this.clientes.filter(c => c.Nome !== nome)
     }
-
-    public static VerificarNomeUnico(nome: string): boolean{
-        return Armazem.InstanciaUnica.Clientes.find(c => c.Nome.toLocaleLowerCase() === nome.toLocaleLowerCase()) == undefined
-    }
-
 }
