@@ -13,7 +13,7 @@ export default class ListarTodosClientesTitular extends Listagem {
         console.log(new ImpressorCliente(c).imprimir());
       });
 
-      this.entrada.receberTexto("Digite qualquer botão para sair da listagem:");
+      this.entrada.receberTexto("Digite enter para sair da listagem:");
 
       break;
     }

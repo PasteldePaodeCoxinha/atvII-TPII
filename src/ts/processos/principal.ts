@@ -1,5 +1,6 @@
 import Navegar from "../abstracoes/navegar";
 import MenuPrincipal from "../menus/menuPricipal";
+import TipoAtualizar from "./atualizar/TipoAtualizar";
 import TipoCadastro from "./cadastro/TipoCadastro";
 import TipoListagem from "./listagem/TipoListagem";
 
@@ -27,7 +28,7 @@ export default class Principal extends Navegar {
                     new TipoListagem().navegar()
                     break;
                 case 3:
-                    console.log("3");
+                    new TipoAtualizar().navegar()
                     break;
                 case 4:
                     console.log("4");

@@ -42,19 +42,13 @@ export default class Cliente {
     public AddDocumento(documento: Documento) { this.documentos.push(documento) }
     public AddDependente(cliente: Cliente) { this.dependentes.push(cliente) }
 
-    public EdiTelefones(numero: string, novoNumero: string, novoDdd: string) {
+    public EdiTelefone(numero: string, novoTel: Telefone) {
         let telefone = this.telefones.find(t => t.Numero == numero)
         if (telefone) {
-            if (novoNumero) { telefone.Numero = novoNumero }
-            if (novoDdd) { telefone.Ddd = novoDdd }
+            telefone.Ddd = novoTel.Ddd
+            telefone.Numero = novoTel.Numero
+        } else {
+            console.log("Telefone não encontrado!");
         }
-    }
-    public EdiEndereco(rua: string, bairro: string, cidade: string, estado: string, pais: string, codigoPostal: string) {
-        if (this.endereco.Rua) { this.endereco.Rua = rua }
-        if (this.endereco.Bairro) { this.endereco.Bairro = bairro }
-        if (this.endereco.Cidade) { this.endereco.Cidade = cidade }
-        if (this.endereco.Estado) { this.endereco.Estado = estado }
-        if (this.endereco.Pais) { this.endereco.Pais = pais }
-        if (this.endereco.CodigoPostal) { this.endereco.CodigoPostal = codigoPostal }
     }
 }

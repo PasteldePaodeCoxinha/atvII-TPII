@@ -2,9 +2,9 @@ import Menu from "../interfaces/menu";
 import Entrada from "../io/entrada";
 
 export default abstract class Navegar {
-    public entrada: Entrada
-    public opcao!: number
-    public menu!: Menu
+    protected entrada: Entrada
+    protected opcao!: number
+    protected menu!: Menu
 
     constructor(){
         this.entrada = new Entrada()
