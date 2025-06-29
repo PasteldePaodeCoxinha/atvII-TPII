@@ -3,6 +3,7 @@ import MenuTipoListagemClientes from "../../menus/menuTipoListagemClientes";
 import ListarTodosClientesTitular from "./ListarTodosClientesTitular";
 import ListarTodosDependentesDeTitular from "./ListarTodosDependentesDeTitular";
 import ListarUmClienteTitular from "./ListarUmClienteTitular";
+import ListarUmDependenteDeTitular from "./ListarUmDependenteDeTitular";
 
 export default class TipoListagem extends Navegar{
     constructor(){
@@ -32,7 +33,7 @@ export default class TipoListagem extends Navegar{
                     new ListarTodosDependentesDeTitular().listar()
                     break;
                 case 4:
-                    console.log("4");
+                    new ListarUmDependenteDeTitular().listar()
                     break;
                 default:
                     console.log("COMANDO NÃO RECONHECIDO!");
