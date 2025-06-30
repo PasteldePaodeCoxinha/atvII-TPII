@@ -30,7 +30,7 @@ export default class ListarTodosDependentesDeTitular extends Listagem {
       });
 
       this.entrada.receberTexto(
-        "Digite qualquer botão para sair da listagem:"
+        "Aperte enter para sair da listagem:"
       );
 
       break;
